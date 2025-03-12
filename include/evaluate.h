@@ -25,14 +25,14 @@
 /* corner behind the other pieces, but when there are few other pieces left  */
 /* the king should become more active.                                       */
 /*                                                                           */
-/* POSSIBLE IMPROVEMENT: common patterns                                     */
+/* POSSIBLE IMPROVEMENT: common patterns                                     *//* DOING */
 /* pawns like to be connected in chains so they can defend each other. rooks */
 /* like to be placed on open files, and bishops like to be placed on open    */
 /* diagonals. other common patterns include pins, forks, and batteries. add  */
 /* some logic to your evaluation function to detect these patterns and       */
 /* change the value of the position accordingly.                             */
 /*                                                                           */
-/* POSSIBLE IMPROVEMENT: mobility score                                      */
+/* POSSIBLE IMPROVEMENT: mobility score                                      */ /* DOING */
 /* the mobility score is a measure of how many moves a player can make. if a */
 /* player has many possible moves, they probably have a strong position.     */
 /*                                                                           */

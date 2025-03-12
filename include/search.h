@@ -41,7 +41,7 @@ struct search_result {
 /* position.                                                                 */
 /*                                                                           */
 /* POSSIBLE IMPROVEMENT: alpha-beta pruning                                  */
-/* our naive minimax function wastes a lot of time calculating moves for one */
+/* our naive minimax function wastes a lot of time calculating moves for one */ /* DOING */
 /* player, after we have already found a move that is so bad for the other   */
 /* player that they would never want to enter this position anyways. for     */
 /* example, if we are trying to determine the value of a queen move, and we  */
@@ -133,7 +133,7 @@ struct search_result minimax(const struct position *pos, int depth, int alpha, i
 /*                                                                           */
 /* POSSIBLE IMPROVEMENT: opening book                                        */
 /* a deterministic chess engine will always output the same move when given  */
-/* the same position. so instead of wasting time calculating the best move   */
+/* the same position. so instead of wasting time calculating the best move   */ /* DONE */
 /* in the starting position, you can instead precalculate the best move and  */
 /* return it immediately. you can also precalculate moves for common         */
 /* openings (for example, what to do after 1. e4 e5?), and endgames.         */

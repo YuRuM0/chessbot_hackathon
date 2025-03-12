@@ -18,15 +18,15 @@
 /* square that is controlled by an opponent piece. returns the number of     */
 /* pseudo-legal moves generated.                                             */
 /*                                                                           */
-/* POSSIBLE IMPROVEMENT: staged or chunked move generation                   */
-/* some moves such as captures and pawn promotions are likely to have a      */
+/* POSSIBLE IMPROVEMENT: staged or chunked move generation                   */ 
+/* some moves such as captures and pawn promotions are likely to have a      */ /* DOING */
 /* bigger impact on the game than quiet moves. instead of wasting time       */
 /* generating (and sorting) all moves, provide a way to generate important   */
 /* moves separately. this is especially useful for alpha-beta pruning.       */
 /*                                                                           */
 /* https://www.chessprogramming.org/Move_Generation                          */
 /* https://www.chessprogramming.org/Pseudo-Legal_Move                        */
-size_t generate_pseudo_legal_moves(const struct position *pos, struct move *moves);
+size_t generate_pseudo_legal_moves(const struct position *pos, struct move *moves, int stage);
 
 /* generate all legal moves and store them in `moves`, which must be large   */
 /* enough to hold all legal moves in the position. returns the number of     */
@@ -40,7 +40,7 @@ size_t generate_pseudo_legal_moves(const struct position *pos, struct move *move
 /*                                                                           */
 /* https://www.chessprogramming.org/Check                                    */
 /* https://www.chessprogramming.org/Double_Check                             */
-size_t generate_legal_moves(const struct position *pos, struct move *moves);
+size_t generate_legal_moves(const struct position *pos, struct move *moves, int stage);
 size_t generate_opening_move(struct move *moves);
 
 #endif

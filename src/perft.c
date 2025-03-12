@@ -24,7 +24,11 @@ static const struct perft_data perft_data[] = {
 
 static unsigned long perft(const struct position *pos, int depth) {
 	struct move moves[MAX_MOVES];
-	size_t count = generate_legal_moves(pos, moves);
+	int stage;
+
+	for (stage = 0; stage < 2; stage++)
+{
+	size_t count = generate_legal_moves(pos, moves, stage);
 
 	if (depth == 0) {
 		return 1;
@@ -44,6 +48,7 @@ static unsigned long perft(const struct position *pos, int depth) {
 
 		return result;
 	}
+}
 }
 
 void perft_run(void) {

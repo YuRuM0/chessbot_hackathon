@@ -186,12 +186,14 @@ int evaluate(const struct position *pos) {
 	struct move moves[MAX_MOVES];
 	int count = 0;
 	int j = 0;
+	int stage = 0;
 	int white_mobility = 0;
 	int black_mobility = 0;
 	
 	int piece = 0;
-
-	count = generate_legal_moves(pos, moves);
+	for (stage = 0; stage < 2; stage++)
+{
+	count = generate_legal_moves(pos, moves, stage);
 	while (j < count)
 	{
 		if (COLOR(moves[j].from_square) == WHITE) {
@@ -236,5 +238,6 @@ int evaluate(const struct position *pos) {
 		score[WHITE] += white_mobility * 5;
    	    score[BLACK] += black_mobility * 5;
 	}
+}
 	return score[pos->side_to_move] - score[1 - pos->side_to_move];
 }

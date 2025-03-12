@@ -142,7 +142,8 @@ int is_legal(const struct position *pos, struct move move) {
 	}
 
 	/* generate all pseudo-legal moves for the opponent.                     */
-	count = generate_pseudo_legal_moves(&copy, moves);
+	count += generate_pseudo_legal_moves(&copy, moves, 0);
+	count += generate_pseudo_legal_moves(&copy, moves, 1);
 
 	/* return false if any of those moves could capture the king.            */
 	for (index = 0; index < count; index++) {

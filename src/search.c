@@ -7,21 +7,22 @@
 #include <stdio.h>
 
 struct search_result minimax(const struct position *pos, int depth, int alpha, int beta) {
+	int stage;
 	struct search_result result;
 
 	result.score = -1000000;
 
-	if (depth == 0) {
+	if (depth == 0) 
+	{
 		/* we have reached our search depth, so evaluate the position.       */
 		result.score = evaluate(pos);
 		return result;
 	}
-	else
-	{
+	for (stage = 0; stage < 2; stage++)
+	{ /*Check for stage*/
 		struct move moves[MAX_MOVES];
-		size_t count = generate_legal_moves(pos, moves);
+		size_t count = generate_legal_moves(pos, moves, stage);
 		size_t index;
-
 		for (index = 0; index < count; index++) {
 			struct position copy = *pos;
 			int score;
@@ -37,16 +38,16 @@ struct search_result minimax(const struct position *pos, int depth, int alpha, i
 			/* update the best move if we found a better one.                */
 			if (score > beta) /*>=: hard, > fail soft*/
 			{
-            	result.score = score;
-            	return result;
-        	}
-        	if (score > result.score) {
-            	result.move = moves[index];
-            	result.score = score;
-        	}
-        	if (score > alpha) {
-           		alpha = score;
-        	}
+				result.score = score;
+				return result;
+			}
+			if (score > result.score) {
+				result.move = moves[index];
+				result.score = score;
+			}
+			if (score > alpha) {
+				alpha = score;
+			}
 		}
 	}
 	return result;
